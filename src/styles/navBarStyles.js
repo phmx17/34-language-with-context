@@ -19,7 +19,13 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]:{  // [] not an array; value for field; 'theme' gets passed above
       display: 'block'  // at small display title
     }
-  },  
+  },
+  themeSwitch: {
+    marginLeft: '15px'
+  },
+  themeTitle: {
+    marginLeft: '25px'
+  },
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,

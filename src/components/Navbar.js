@@ -50,41 +50,37 @@ const Navbar = (props) => {
     const { search, flag, language } = content[currentLanguage];
    
     return (
-        <div className={classes.root}>       
-          <AppBar position="static" color={isDarkMode ? 'default' : 'primary'} >
-            <Toolbar>              
-              <div style={{ marginRight: '20px' }}>
-                {currentLanguage === language && <i className={flag} /> }                 
+      <div className={classes.root}>       
+        <AppBar position="static" color={isDarkMode ? 'default' : 'primary'} >
+          <Toolbar>              
+            <Typography className={classes.title} variant="h6" color="inherit">
+                Language
+            </Typography>
+            <div style={{ marginLeft: '20px', marginTop: '4px' }}>
+              {currentLanguage === language && <i className={flag} /> }                 
+            </div>
+
+            <Typography className={classes.themeTitle} variant="h6" color="inherit">
+              Theme   
+            </Typography>
+            <Switch className={classes.themeSwitch} onChange={toggleTheme} />  {/* toggle theme button; triggers method in ThemeProvider */}
+
+            <div className={classes.grow} />
+            <div className={classes.search}> 
+              <div className={classes.searchIcon}>
+                <SearchIcon />
               </div>
-              <Typography className={classes.title} variant="h6" color="inherit">
-                App Language: {currentLanguage}   
-              </Typography>
-
-              <Switch onChange={toggleTheme} />  {/* toggle theme button; triggers method in ThemeProvider */}
-              
-              <Typography className={classes.title} variant="h6" color="inherit">
-                Theme   
-              </Typography>
-
-              <div className={classes.grow} />
-              <div className={classes.search}> 
-                <div className={classes.searchIcon}>
-                  <SearchIcon />
-                </div>
-                <InputBase placeholder={search}
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput
-                }} 
-                />
-
-              </div>            
-            </Toolbar>
-          </AppBar>
-        </div>
+              <InputBase placeholder={search}
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput
+              }} 
+              />
+            </div>            
+          </Toolbar>
+        </AppBar>
+      </div>
     );
 };
 // wrapping with HOC which is nicer than wrapping large jsx code block
 export default withLanguageContext(withStyles(styles)(Navbar));
-
-
